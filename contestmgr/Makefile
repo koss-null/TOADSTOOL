@@ -30,9 +30,9 @@ BENCHCPUS ?= 1,2,4
 GOCMD = go
 ARCHES ?= 386 amd64
 OSES ?= linux 
-OUTTPL = $(DISTDIR)/$(NAME)
+OUTTPL = ./build/$(NAME)
 LDFLAGS = -X $(PKG).Version=$(VERSION) -X $(PKG).Build=$(COMMIT_ID)
-GOBUILD = $(GOCMD) build -o "$(OUTTPL)" contestmgr
+GOBUILD = $(GOCMD) build -o "$(OUTTPL)" ./...
 GOCLEAN = $(GOCMD) clean
 GOINSTALL = $(GOCMD) install -a -tags "$(BUILD_TAGS)" -ldflags "$(LDFLAGS)"
 GOTEST = $(GOCMD) test -v -tags "$(BUILD_TAGS)"
@@ -68,7 +68,7 @@ test: clean dep
 setup-dirs:
 	mkdir -p "$(RPTDIR)"
 
-build: 
+build:  dep
 # todo: need to fix "dep" and add it as a dependency step
 	$(GOBUILD) 
 # $(RPTDIR)/build-$@.out"
