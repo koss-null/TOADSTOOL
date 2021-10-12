@@ -1,3 +1,5 @@
+export GO111MODULE=on
+
 # Parameters
 PKG = github.com/koss-null/toadstool/contestmgr
 NAME = contestmgr
@@ -21,14 +23,14 @@ VERSION ?= $(shell git -C "$(MD)" describe --tags --dirty=-dev)
 COMMIT_ID := $(shell git -C "$(MD)" rev-parse HEAD | head -c8)
 BUILD_TAGS ?= release
 CMDPKG = $(PKG)/cmd
-CMDS := $(shell find "$(CMDDIR)/" -mindepth 1 -maxdepth 1 -type d | sed 's/ /\\ /g' | xargs -n1 basename)
+# CMDS := $(shell find "$(CMDDIR)/" -mindepth 1 -maxdepth 1 -type d | sed 's/ /\\ /g' | xargs -n1 basename)
 BENCHCPUS ?= 1,2,4
 
 # Commands
 GOCMD = go
 ARCHES ?= 386 amd64
 OSES ?= linux 
-OUTTPL = $(DISTDIR)/$(NAME)-$(VERSION)-{{.OS}}_{{.Arch}}/{{.Dir}}
+OUTTPL = $(DISTDIR)/$(NAME)
 LDFLAGS = -X $(PKG).Version=$(VERSION) -X $(PKG).Build=$(COMMIT_ID)
 GOBUILD = $(GOCMD) build -o "$(OUTTPL)" contestmgr
 GOCLEAN = $(GOCMD) clean
@@ -66,10 +68,10 @@ test: clean dep
 setup-dirs:
 	mkdir -p "$(RPTDIR)"
 
-build: $(CMDS)
+build: 
 # todo: need to fix "dep" and add it as a dependency step
-$(CMDS): setup-dirs 
-	$(GOBUILD) "$(CMDPKG)/$@" | tee "$(RPTDIR)/build-$@.out"
+	$(GOBUILD) 
+# $(RPTDIR)/build-$@.out"
 
 debug:
 	$(info MD=$(MD))
