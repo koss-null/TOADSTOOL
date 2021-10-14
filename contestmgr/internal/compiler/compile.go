@@ -1,9 +1,6 @@
 package compiler
 
-const (
-	callerCodePath = "../../resources/compiler/solution_checker.mockgo"
-)
-
-type Compiler struct {
-	code string
+// Builds the code localted in path
+func BuildCode(path string) error {
+	return nil
 }

@@ -16,7 +16,6 @@ const (
 
 type (
 	templater struct {
-		userCode     string
 		templatePath string
 		templateCode string
 		resultPath   string
@@ -38,12 +37,10 @@ type (
 )
 
 func NewTemplater(
-	userCode string,
 	templatePath string,
 	resultPath string,
 ) Templater {
 	return &templater{
-		userCode,
 		templatePath,
 		"",
 		resultPath,
