@@ -1,0 +1,70 @@
+package main
+
+import (
+	"time"
+	"fmt"
+
+	. "./solution"
+)
+
+<<<func_types>>>
+
+<<<func_params_generators>>>
+
+func warmUp(init_val int) int {
+	sum := init_val
+	for i := 0; i < 10000; i++ {
+		sum += i
+	}
+	return sum
+}
+
+type (
+	Testabe interface {
+		Compare(target Testable) bool
+		Val() interface{}
+	}
+
+	TestCase struct {
+		<<<test_case_struct>>>
+	}
+)
+
+
+func test(test_case TestCase, results ...Testable) bool {
+	test_case_results = []interface{}{<<<test_case_params_objected>>>}
+	for i := range results {
+		if !results[i].Compare(test_case_results[i]) {
+			return false
+		}
+	}
+	return true
+}
+
+func main() {
+	test_cases := <<<test_cases_init>>>
+	if sum := warmUp(0); sum == 10000 { // Always true
+		for i, test_case := range test_cases {
+			start := time.Now()
+
+			# TODO: func_name should not execute more than test_case_time_limit
+			<<<res_params>>> := <<<func_name>>>(<<<test_case_params>>>)
+			finish := time.Now()
+
+			test_case_time := finish.Sub(start)
+			if test_case_time > <<<test_case_time_limit>>> {
+				fmt.Printf("%d TL %v", i, test_case_time)
+				retrun
+			}
+
+			if !test(test_case, <<<res_params>>>) {
+				fmt.Printf("%d WA %v", i, test_case_time)
+				// checking all the tests iven there are WAs already
+				// change to return in for the opposite
+				continue
+			}
+
+			fmt.Println("%d OK %v", i, test_case_time)
+		}
+	}
+}

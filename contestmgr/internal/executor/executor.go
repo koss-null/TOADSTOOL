@@ -2,8 +2,7 @@ package executor
 
 type (
 	executor struct {
-		rawCode       string
-		formattedCode string
+		codePath string
 	}
 
 	Executor interface{}

@@ -1,6 +1,9 @@
 package timer
 
-import "time"
+import (
+	"fmt"
+	"time"
+)
 
 type (
 	timer struct {
@@ -21,6 +24,7 @@ func (t *timer) Start() {
 
 func (t *timer) Stop() {
 	t.finish = time.Now()
+	fmt.Println()
 }
 
 func (t *timer) Delta() time.Duration {
