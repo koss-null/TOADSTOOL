@@ -1,0 +1,20 @@
+// checker
+1. get the solution from a queue
+2. build the solution <- can be done in parallel
+3. take one built solution 
+	3.1 run tests
+	3.2 parse results
+4. put results into the results queue
+// mockgo
+1. learn it to read tests from a file
+
+// think about
+4. is the best way to built a binary is to call "go built?" or can we
+1. templater now is writing convert(mockgo) fhile to a file system
+	we neet to store at least solution, test files and built binary at 
+	the same place on fs. Do we need to have some object to manage all
+	file operations in this directory
+2. need to mock the fs. Probably the solution is to use config files
+to store paths, and mock the fs using docker eventually
+3. UNIT TESTS !!!!
+	use some library to call the go tool?
