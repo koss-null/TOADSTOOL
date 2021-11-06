@@ -31,8 +31,8 @@ type (
 	Templater interface {
 		ReadTemplate() error
 		AddHandler(handlerName string, handler func() string)
-		// Creates the file with all templates filled
-		Build() error
+		// returns a string of the result code with all templates filled
+		Build() (string, error)
 	}
 )
 
@@ -78,6 +78,7 @@ func (t *templater) AddHandler(handlerName string, handler func() string) {
 	t.templateToHandlerFunc[handlerName] = handler
 }
 
+// should be changed with the internal/codewriter/Writer
 func (t *templater) writeResult(result string) error {
 	file, err := os.Create(fmt.Sprintf("%s%cmain.go", t.resultPath, os.PathSeparator))
 	if err != nil {
@@ -100,15 +101,15 @@ func (t *templater) evalTemplateCode(template string) string {
 	return t.templateToHandler[template]
 }
 
-func (t *templater) Build() error {
+func (t *templater) Build() (string, error) {
 	// check if the template was read
 	if !t.isTemplateFilled {
-		return errors.New("template file was not read")
+		return "", errors.New("template file was not read")
 	}
 	// check if all file templates have its handlers
 	for k := range t.templateList {
 		if _, ok := t.templateToHandlerFunc[k]; !ok {
-			return fmt.Errorf(
+			return "", fmt.Errorf(
 				"there is no handler for the %s%s%s template",
 				TemplateOpenBr, k, TemplateCloseBr,
 			)
@@ -129,5 +130,5 @@ func (t *templater) Build() error {
 		resultCode.WriteString(t.templateCode[lastSplit:len(t.templateCode)])
 	}
 
-	return t.writeResult(resultCode.String())
+	return resultCode.String(), nil
 }

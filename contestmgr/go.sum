@@ -4,5 +4,7 @@ github.com/koss-null/toadstool v0.0.0-20211012075006-d8480d08fe38 h1:hWBhHVevAVN
 github.com/koss-null/toadstool v0.0.0-20211012075006-d8480d08fe38/go.mod h1:pihvYw+j3LU7pzEHWIEMZsTaQsX//dog5jXTZ35K3Ro=
 github.com/koss-null/toadstool v0.0.0-20211014003602-1bfcbe76d7d0 h1:jUssW3rwa9SaYjdXoUeC0x5GMhfdIhM+LQy6TvVeIr0=
 github.com/koss-null/toadstool v0.0.0-20211014003602-1bfcbe76d7d0/go.mod h1:pihvYw+j3LU7pzEHWIEMZsTaQsX//dog5jXTZ35K3Ro=
+github.com/koss-null/toadstool v0.0.0-20211018022726-eac4713935a3 h1:2Eq7dZ80EaSzGVyxhOijdX8Sb6GZCa34zTMGHUa1q2s=
+github.com/koss-null/toadstool v0.0.0-20211018022726-eac4713935a3/go.mod h1:g7rPm92x4SRYE6FiDOmgFApF5YdqeWCyE3k85+Krsqw=
 github.com/koss-null/toadstool/contestmgr v0.0.0-20211012055413-3b8cfa2a50e8 h1:tLnW0H7WKV0anKg2pPPCMBZTSMmvE7nhGfXj9x04DFM=
 github.com/koss-null/toadstool/contestmgr v0.0.0-20211012055413-3b8cfa2a50e8/go.mod h1:YClHeB17OaNMpdDUxfeV9MM9wTakI7AJHD+mj9P7wHo=
